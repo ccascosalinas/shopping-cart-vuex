@@ -1,25 +1,17 @@
-<template>
-  <div class="column">
-    <div class="card">
-      <header class="card-header">
-        <p class="card-header-title has-text-grey">
-          {{ title }}
-        </p>
-      </header>
-      <div class="card-content">
-        <div class="content has-text-centered">
-          <img :src="image" alt="">
-        </div>
-      </div>
-      <footer class="card-footer">
-        <div class="card-footer-item">
-          <span>
-            <slot />
-          </span>
-        </div>
-      </footer>
-    </div>
-  </div>
+<template lang='pug'>
+div
+  .column
+  .card
+    header.card-header
+      p.card-header-title.has-text-grey
+        | {{ title }}
+    .card-content
+      .content.has-text-centered
+        img(:src='image' alt='')
+    footer.card-footer
+      .card-footer-item
+        span
+          slot
 </template>
 
 <script>

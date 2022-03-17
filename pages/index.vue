@@ -1,8 +1,7 @@
-<template>
-  <section class="section">
-     <ButtonRoute/>
-     <CarouselSales/>
-  </section>
+<template lang='pug'>
+section.section
+  ButtonRoute
+  CarouselSales
 </template>
 
 <script>

@@ -1,9 +1,16 @@
-<template>
-  <b-button class="buy" type="is-danger">Buy</b-button>
+<template lang='pug'>
+  div
+    b-button.buy(@click='onClick' type='is-danger') Buy
 </template>
 <script>
 export default {
-  name:'ButtonBuy'
+  name:'ButtonBuy',
+  emits: ['on-click'],
+  methods: {
+    onClick() {
+      this.$emit('on-click');
+    }
+  }
 }
 </script>
 <style>
