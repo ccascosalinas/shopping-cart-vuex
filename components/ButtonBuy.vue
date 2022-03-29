@@ -1,20 +1,20 @@
 <template lang='pug'>
-  div
-    b-button.buy(@click='onClick' type='is-danger') Buy
+div
+  b-button.buy(@click='onClick', type='is-danger') Buy
 </template>
 <script>
 export default {
-  name:'ButtonBuy',
+  name: 'ButtonBuy',
   emits: ['on-click'],
   methods: {
     onClick() {
-      this.$emit('on-click');
-    }
-  }
+      this.$emit('on-click')
+    },
+  },
 }
 </script>
 <style>
-.buy{
-padding: 20px;
+.buy {
+  padding: 20px;
 }
 </style>

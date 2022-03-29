@@ -1,11 +1,18 @@
 <template lang='pug'>
-div
-  .card
-    .card-content
-      h1.subtitle
-        b Your Cart
-      .media
-        .media-content(v-for='(item, index) in cart' :key='index')
+section
+  .buttons
+    img.m-1(src='https://www.pngplay.com/wp-content/uploads/7/Cart-Icon-Background-PNG-Image.png' width='60px' alt='')
+    b-button(label='Show purchease' type='is-primary' size='is-medium' @click='isCardModalActive = true')
+  b-modal(v-model='isImageModalActive')
+    p.image.is-4by3
+      img(src='/static/img/placeholder-1280x960.png')
+  b-modal(v-model='isCardModalActive' :width='640' scroll='keep')
+    .card
+      .card-content
+        h1.subtitle
+          b Your Cart
+        .media 
+         .media-content(v-for='(item, index) in cart' :key='index')
           p.title.is-4 {{ item.title }}
           p.subtitle.is-4
             span
@@ -14,21 +21,25 @@ div
             span
               b-button(@click='increment(item)' type='is-info') +
             span
-              b-button(@click='removeProduct(item)' type='is-danger') Delete
+              b-button(@click='deleteProduct(item)' type='is-danger') Delete
           p.subtitle.is-4
             | Total: $ {{ item.quantity * item.price }}
       .content
         b-button(type='is-info is-light') Total ${{ totalCost.total }}
         b-button(@click='cleanCart' type='is-danger' icon-left='delete') Erase everything
-
+            
+        .content
 </template>
 
-<script>
-import { mapActions } from 'vuex'
+ <script>
+import { mapMutations } from 'vuex'
 export default {
   emits: ['clean-cart'],
   data() {
-    return {}
+    return {
+      isImageModalActive: false,
+      isCardModalActive: false,
+    }
   },
   computed: {
     cart() {
@@ -43,7 +54,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('cart', [
+    ...mapMutations('cart', [
       'decrementProduct',
       'incrementProduct',
       'cleanCart',
@@ -56,7 +67,7 @@ export default {
     increment(product) {
       this.incrementProduct(product)
     },
-    removeProduct(product){
+    deleteProduct(product){
       this.deleteProduct(product)
     }
   },
@@ -75,3 +86,4 @@ export default {
   padding: 10px;
 }
 </style>
+}

@@ -2,6 +2,7 @@
 b-message.is-small(type='is-info')
   h1.price ${{ price }}
 
+
 </template>
 <script>
 export default {

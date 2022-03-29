@@ -1,7 +1,8 @@
 <template lang='pug'>
 div
-  NavBar
+  nav-bar
   nuxt
+
 
 </template>
 <script>

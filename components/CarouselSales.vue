@@ -1,11 +1,12 @@
 <template lang='pug'>
-  div
-    b-carousel
-      b-carousel-item(v-for='(carousel, i) in carousels' :key='i')
-        section(:class='`hero is-small is-${carousel.color}`')
-          .hero-body.has-text-centered
-            h1.title {{carousel.text}}
-            img.img(:src='carousel.img')
+div
+  b-carousel
+    b-carousel-item(v-for='(carousel, i) in carousels' :key='i')
+      section(:class='`hero is-small is-${carousel.color}`')
+        .hero-body.has-text-centered
+          h1.title {{carousel.text}}
+          img.img(:src='carousel.img')
+
 </template>
 
 <script>

@@ -1,19 +1,13 @@
-<template>
-<div>
-  <h1 class="subtitle"> <b>The best computers on the market, choose yours.</b></h1>
-  <section class="main-content columns m-1">
-      <aside class="row is-2">
-        <p class="menu-label is-hidden-touch">General</p>
-        <ul class="menu-list">
-          <li v-for="(item, key) of items" :key="key">
-            <NuxtLink :to="item.to" exact-active-class="is-active">
-              <b-icon :icon="item.icon" /> {{ item.title }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </aside>
-    </section>
-</div>
+<template lang='pug'>
+div
+  section.main-content.columns.m-1
+    aside.row.is-2
+      p.menu-label.is-hidden-touch General
+      ul.menu-list
+        li(v-for='(item, key) of items' :key='key')
+          nuxt-link(:to='item.to' exact-active-class='is-active')
+            b-icon(:icon='item.icon')
+            | {{ item.title }}
 </template>
 <script>
 export default {
@@ -27,10 +21,15 @@ export default {
           to: { name: 'index' },
         },
         {
-          title: 'Shop',
+          title: 'Sales',
           icon: 'lightbulb',
-          to: { name: 'inspire' },
+          to: { name: 'salesProducts' },
         },
+        {
+          title: 'My cart',
+          icon: 'cart',
+          to: { name: 'myCart' }
+        }
       ],
     }
   }

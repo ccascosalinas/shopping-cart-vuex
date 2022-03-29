@@ -1,10 +1,8 @@
 <template lang='pug'>
 div
-  .column
   .card
     header.card-header
-      p.card-header-title.has-text-grey
-        | {{ title }}
+      p.card-header-title.has-text-grey {{ title }}
     .card-content
       .content.has-text-centered
         img(:src='image' alt='')
@@ -17,10 +15,8 @@ div
 <script>
 export default {
   name: 'BuefyCard',
-  data(){
-    return {
-     
-    }
+  data() {
+    return {}
   },
   props: {
     title: {
@@ -32,7 +28,7 @@ export default {
       type: String,
       default: '',
       required: true,
-    }
+    },
   },
 }
 </script>

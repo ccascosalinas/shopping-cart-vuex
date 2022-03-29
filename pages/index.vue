@@ -1,18 +1,18 @@
 <template lang='pug'>
 section.section
-  ButtonRoute
-  CarouselSales
+  h1.subtitle
+    b The best computers on the market, choose yours.
+  button-route
+  carousel-sales
 </template>
 
 <script>
-import Card from '~/components/Card'
 import ButtonRoute from '~/components/ButtonRoute'
 import CarouselSales from '../components/CarouselSales.vue'
 export default {
   name: 'IndexPage',
   
   components: {
-    Card,
     ButtonRoute,
     CarouselSales
   },
