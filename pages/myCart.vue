@@ -6,12 +6,10 @@ div
 <script>
 import ButtonRoute from '~/components/ButtonRoute'
 import ModalShop from '~/components/ModalShop'
-import PopUp from '~/components/PopUp'
 export default {
   components: {
     ButtonRoute,
     ModalShop,
-    PopUp
   }
 }
 </script>

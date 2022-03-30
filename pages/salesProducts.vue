@@ -4,7 +4,7 @@ div
     button-route
     .columns.is-mobile
       .img.m-2(v-for='(product, index) in products' :key='index')
-        card(:title='product.title' :image='product.imageUrl')
+        card(:product='product')
           .buttons
             b-button(type='is-info')
               nuxt-link.more(to='/inspire') View More

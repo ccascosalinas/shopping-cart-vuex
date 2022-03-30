@@ -11,7 +11,7 @@ div
 export default {
   name: 'DefaultLayout',
   data() {
-    return
+    return {}
   },
 }
 </script>

@@ -2,10 +2,10 @@
 div
   .card
     header.card-header
-      p.card-header-title.has-text-grey {{ title }}
+      p.card-header-title.has-text-grey {{ product.title }}
     .card-content
-      .content.has-text-centered
-        img(:src='image' alt='')
+        .content.has-text-centered
+          img(:src='product.imageUrl' alt='')
     footer.card-footer
       .card-footer-item
         span
@@ -19,16 +19,16 @@ export default {
     return {}
   },
   props: {
-    title: {
-      type: String,
-      default: '',
-      required: true,
+   product: {
+     type: Object,
+     required: true,
+     default(){
+       return {}
+     }
+   },
+   mounted(){
+     console.log(this.product)
+   }
     },
-    image: {
-      type: String,
-      default: '',
-      required: true,
-    },
-  },
 }
 </script>

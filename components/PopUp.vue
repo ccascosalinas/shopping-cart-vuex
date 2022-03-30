@@ -1,8 +1,9 @@
 <template lang='pug'>
 section
   .buttons
-    img.m-1(src='https://www.pngplay.com/wp-content/uploads/7/Cart-Icon-Background-PNG-Image.png' width='60px' alt='')
+    img.m-1(src='https://cdn-icons-png.flaticon.com/512/107/107831.png' width='60px' alt='')
     b-button(label='Show purchease' type='is-primary' size='is-medium' @click='isCardModalActive = true')
+    b-button(type='is-success') {{ totalProducts.totalProd }}
   b-modal(v-model='isImageModalActive')
     p.image.is-4by3
       img(src='/static/img/placeholder-1280x960.png')
@@ -11,9 +12,9 @@ section
       .card-content
         h1.subtitle
           b Your Cart
+          p.subtitle.is-5 Total products: {{ totalProducts.totalProd }}
         .media 
          .media-content(v-for='(item, index) in cart' :key='index')
-          p.title.is-5 Total products: {{ totalProducts.totalProd }}
           p.title.is-6 {{ item.title }}
           p.subtitle.is-5
             span

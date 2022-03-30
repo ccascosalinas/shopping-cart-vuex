@@ -1,23 +1,26 @@
 <template lang='pug'>
 div
+  pop-up.cart
   button-route
-  card(:title='selectedProduct.title' :image='selectedProduct.imageUrl')
+  card(:product='selectedProduct')
     p.text {{ selectedProduct.description }}
-  button-buy(@on-click='addProductToCart()')
+  b-button(@click='addProductToCart()' type='is-danger') Add to cart
 
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import ButtonBuy from '../components/ButtonBuy.vue'
 import ButtonRoute from '../components/ButtonRoute.vue'
+import PopUp from '../components/PopUp.vue'
 export default {
   name: 'shopProduct',
+  data(){
+    return {}
+  },
   computed: {
     ...mapGetters({
       selectedProduct: 'product/getSelectedProduct',
     }),
   },
-  mounted() {},
   methods: {
     ...mapActions('product', ['fetchSelectedProduct']),
     ...mapActions('cart', ['addToCart']),
@@ -27,7 +30,7 @@ export default {
   },
   components: {
     ButtonRoute,
-    ButtonBuy,
+    PopUp
   },
 }
 </script>
