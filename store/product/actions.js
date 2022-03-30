@@ -10,4 +10,7 @@ export default {
     const dellProducts = DellProducts
     commit('SET_DELL_PRODUCTS', dellProducts)
   },
+  fetchSelectedProduct({ commit }, selectedProduct){
+    commit('SET_SELECTED_PRODUCT', selectedProduct)
+  }
 }

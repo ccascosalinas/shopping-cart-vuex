@@ -1,7 +1,6 @@
 <template lang='pug'>
 div
   button-route
-  pop-up.cart
   modal-shop
 </template>
 <script>

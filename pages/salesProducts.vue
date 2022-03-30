@@ -1,20 +1,13 @@
-<template >
-<div>
-  <section class="section">
-    <button-route></button-route>
-    <div class="columns is-mobile">
-      <div v-for="(product, index) in products" :key="index">
-        <card :title="product.title" :image="product.imageUrl">
-          <div class="buttons">
-            <b-button type="is-info">
-              <NuxtLink to='/inspire'>View More</Nuxtlink>
-            </b-button>
-          </div>
-        </card>
-      </div>
-    </div>
-  </section>
-</div>
+<template lang='pug'>
+div
+  section.section
+    button-route
+    .columns.is-mobile
+      .img.m-2(v-for='(product, index) in products' :key='index')
+        card(:title='product.title' :image='product.imageUrl')
+          .buttons
+            b-button(type='is-info')
+              nuxt-link.more(to='/inspire') View More
 </template>
 
 <script>
@@ -22,24 +15,33 @@ import ButtonRoute from '../components/ButtonRoute.vue'
 import Card from '../components/Card.vue'
 import ButtonBuy from '../components/ButtonBuy.vue'
 import Price from '../components/Price.vue'
-import { mapActions, mapMutations } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'InspirePage',
   computed: {
-    products() {
-      return this.$store.getters['product/getProducts'];
-    },
+    ...mapGetters({
+      products: 'product/getProducts',
+    }),
   },
   mounted() {
-    this.fetchProducts();
+    this.fetchProducts()
   },
   components: { ButtonRoute, Card, ButtonBuy, Price },
   methods: {
     ...mapActions('product', ['fetchProducts']),
-    ...mapMutations('cart', ['addToCart', 'cleanCart']),
+    ...mapActions('cart', ['addToCart', 'cleanCart']),
     addProductToCart(product) {
-      this.addToCart(product);
+      this.addToCart(product)
     },
   },
 }
 </script>
+
+<style>
+.img {
+  width: 400px;
+}
+.more {
+  color: rgb(255, 255, 255);
+}
+</style>

@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-  b-button.buy(@click='onClick', type='is-danger') Buy
+  b-button.buy(@click='onClick', type='is-danger') Add to Cart
 </template>
 <script>
 export default {
@@ -16,5 +16,6 @@ export default {
 <style>
 .buy {
   padding: 20px;
+  margin: 4px;
 }
 </style>

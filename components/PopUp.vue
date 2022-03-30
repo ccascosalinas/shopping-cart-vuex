@@ -13,16 +13,19 @@ section
           b Your Cart
         .media 
          .media-content(v-for='(item, index) in cart' :key='index')
-          p.title.is-4 {{ item.title }}
-          p.subtitle.is-4
+          p.title.is-5 Total products: {{ totalProducts.totalProd }}
+          p.title.is-6 {{ item.title }}
+          p.subtitle.is-5
+            span
+              h1.subtitle.is-6 In stock {{ item.stock - item.quantity }}
             span
               b-button(@click='decrement(item)' type='is-info') -
             |               Quantity: {{ item.quantity }}
             span
               b-button(@click='increment(item)' type='is-info') +
             span
-              b-button(@click='deleteProduct(item)' type='is-danger') Delete
-          p.subtitle.is-4
+              b-button(@click='removeProduct(item)' type='is-danger') Delete
+          p.subtitle.is-6
             | Total: $ {{ item.quantity * item.price }}
       .content
         b-button(type='is-info is-light') Total ${{ totalCost.total }}
@@ -32,7 +35,7 @@ section
 </template>
 
  <script>
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   emits: ['clean-cart'],
   data() {
@@ -52,9 +55,16 @@ export default {
         total,
       }
     },
+    totalProducts(){
+      let totalProd = 0
+      this.cart.forEach((item) => (totalProd += item.quantity))
+      return {
+        totalProd,
+      }
+    }
   },
   methods: {
-    ...mapMutations('cart', [
+    ...mapActions('cart', [
       'decrementProduct',
       'incrementProduct',
       'cleanCart',
@@ -67,7 +77,7 @@ export default {
     increment(product) {
       this.incrementProduct(product)
     },
-    deleteProduct(product){
+    removeProduct(product){
       this.deleteProduct(product)
     }
   },

@@ -4,5 +4,7 @@ export default {
   },
   getDellProducts(state){
     return state.dellProducts;
-  }
+  },
+  getSelectedProduct(state){
+    return state.selectedDellProduct;}
 }
