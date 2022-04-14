@@ -1,5 +1,5 @@
 export default () => ({
-  products: [],
-  dellProducts: [],
-  selectedDellProduct: {}
+  dellProducts: {},
+  selectedDellProduct: {},
+  products: {},
 })

@@ -2,6 +2,8 @@
 section.section
   h1.subtitle
     b The best computers on the market, choose yours.
+  nuxt-link(to='admin/cloudinary')
+    button Upload Media
   button-route
   carousel-sales
 </template>

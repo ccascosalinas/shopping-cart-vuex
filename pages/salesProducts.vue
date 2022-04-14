@@ -3,7 +3,7 @@ div
   section.section
     button-route
     .columns.is-mobile
-      .img.m-2(v-for='(product, index) in products' :key='index')
+      .img.m-2(v-for='(product, index) in products', :key='index')
         card(:product='product')
           .buttons
             b-button(type='is-info')
@@ -11,6 +11,7 @@ div
 </template>
 
 <script>
+import axios from 'axios'
 import ButtonRoute from '../components/ButtonRoute.vue'
 import Card from '../components/Card.vue'
 import ButtonBuy from '../components/ButtonBuy.vue'
@@ -18,21 +19,21 @@ import Price from '../components/Price.vue'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'InspirePage',
-  computed: {
-    ...mapGetters({
-      products: 'product/getProducts',
-    }),
-  },
-  mounted() {
-    this.fetchProducts()
+  async fetch({ store }) {
+    await store.dispatch('product/setProducts')
   },
   components: { ButtonRoute, Card, ButtonBuy, Price },
   methods: {
-    ...mapActions('product', ['fetchProducts']),
+    ...mapActions('product', ['setProducts']),
     ...mapActions('cart', ['addToCart', 'cleanCart']),
     addProductToCart(product) {
       this.addToCart(product)
     },
+  },
+  computed: {
+    ...mapGetters({
+      products: 'product/getProducts',
+    }),
   },
 }
 </script>
